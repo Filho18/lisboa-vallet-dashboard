@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -110,21 +110,20 @@ export function VehicleRegistrationForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-card/80 backdrop-blur-sm border-border shadow-lg">
+    <Card className="w-full max-w-md mx-auto bg-[rgba(26,26,29,0.85)] backdrop-blur-lg border-2 border-[color:#8a2be2] shadow-2xl shadow-[color:#007bff33] rounded-2xl transition-all duration-300 hover:shadow-[0_0_32px_4px_#8a2be299]">
       <CardHeader className="text-center space-y-2">
-        <CardTitle className="text-2xl font-bold text-primary">
+        <CardTitle className="text-3xl font-extrabold font-title text-white drop-shadow-glow-primary">
           Registro de Veículo
         </CardTitle>
-        <CardDescription className="text-muted-foreground">
+        <CardDescription className="text-gray-300 font-body">
           Registre seu veículo para usar o estacionamento da igreja
         </CardDescription>
       </CardHeader>
-      
       <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="nome_completo" className="text-sm font-medium flex items-center gap-2">
-              <User className="h-4 w-4" />
+            <Label htmlFor="nome_completo" className="text-base font-semibold flex items-center gap-2 text-gray-100 font-body">
+              <User className="h-5 w-5 text-[color:#007bff]" strokeWidth={2} />
               Nome Completo*
             </Label>
             <Input
@@ -134,13 +133,12 @@ export function VehicleRegistrationForm() {
               onChange={(e) => handleInputChange('nome_completo', e.target.value)}
               placeholder="Digite seu nome completo"
               required
-              className="focus:ring-primary"
+              className="focus:ring-2 focus:ring-[color:#007bff] focus:border-[color:#007bff] bg-[rgba(20,22,30,0.7)] border border-[color:#222] text-white placeholder-gray-400 font-body transition-all"
             />
           </div>
-
           <div className="space-y-2">
-            <Label htmlFor="telefone" className="text-sm font-medium flex items-center gap-2">
-              <Phone className="h-4 w-4" />
+            <Label htmlFor="telefone" className="text-base font-semibold flex items-center gap-2 text-gray-100 font-body">
+              <Phone className="h-5 w-5 text-[color:#8a2be2]" strokeWidth={2} />
               Número de Telefone*
             </Label>
             <Input
@@ -150,14 +148,13 @@ export function VehicleRegistrationForm() {
               onChange={(e) => handleInputChange('telefone', formatPhone(e.target.value))}
               placeholder="123 456 789"
               required
-              className="focus:ring-primary"
+              className="focus:ring-2 focus:ring-[color:#8a2be2] focus:border-[color:#8a2be2] bg-[rgba(20,22,30,0.7)] border border-[color:#222] text-white placeholder-gray-400 font-body transition-all"
             />
           </div>
-
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label htmlFor="marca_carro" className="text-sm font-medium flex items-center gap-2">
-                <Car className="h-4 w-4" />
+              <Label htmlFor="marca_carro" className="text-base font-semibold flex items-center gap-2 text-gray-100 font-body">
+                <Car className="h-5 w-5 text-[color:#e6b800]" strokeWidth={2} />
                 Marca*
               </Label>
               <Input
@@ -167,12 +164,11 @@ export function VehicleRegistrationForm() {
                 onChange={(e) => handleInputChange('marca_carro', e.target.value)}
                 placeholder="Ex: Toyota"
                 required
-                className="focus:ring-primary"
+                className="focus:ring-2 focus:ring-[color:#e6b800] focus:border-[color:#e6b800] bg-[rgba(20,22,30,0.7)] border border-[color:#222] text-white placeholder-gray-400 font-body transition-all"
               />
             </div>
-
             <div className="space-y-2">
-              <Label htmlFor="modelo_carro" className="text-sm font-medium">
+              <Label htmlFor="modelo_carro" className="text-base font-semibold text-gray-100 font-body">
                 Modelo*
               </Label>
               <Input
@@ -182,14 +178,13 @@ export function VehicleRegistrationForm() {
                 onChange={(e) => handleInputChange('modelo_carro', e.target.value)}
                 placeholder="Ex: Corolla"
                 required
-                className="focus:ring-primary"
+                className="focus:ring-2 focus:ring-[color:#007bff] focus:border-[color:#007bff] bg-[rgba(20,22,30,0.7)] border border-[color:#222] text-white placeholder-gray-400 font-body transition-all"
               />
             </div>
           </div>
-
           <div className="space-y-2">
-            <Label htmlFor="matricula_carro" className="text-sm font-medium flex items-center gap-2">
-              <Hash className="h-4 w-4" />
+            <Label htmlFor="matricula_carro" className="text-base font-semibold flex items-center gap-2 text-gray-100 font-body">
+              <Hash className="h-5 w-5 text-[color:#8a2be2]" strokeWidth={2} />
               Matrícula do Carro*
             </Label>
             <Input
@@ -199,13 +194,12 @@ export function VehicleRegistrationForm() {
               onChange={(e) => handleInputChange('matricula_carro', e.target.value.toUpperCase())}
               placeholder="Ex: 12-AB-34"
               required
-              className="focus:ring-primary font-mono"
+              className="focus:ring-2 focus:ring-[color:#8a2be2] focus:border-[color:#8a2be2] bg-[rgba(20,22,30,0.7)] border border-[color:#222] text-white placeholder-gray-400 font-mono font-body transition-all"
             />
           </div>
-
           <Button 
             type="submit" 
-            className="w-full bg-primary hover:bg-primary-variant text-primary-foreground font-medium py-2.5 transition-colors"
+            className="w-full bg-[color:#007bff] hover:bg-[color:#8a2be2] text-white font-bold py-3 rounded-xl shadow-lg shadow-blue-900/30 transition-all duration-300 focus:ring-2 focus:ring-[color:#e6b800] focus:ring-offset-2 active:scale-95 animate-pulse-on-hover text-lg tracking-wide"
             disabled={loading}
           >
             {loading ? (

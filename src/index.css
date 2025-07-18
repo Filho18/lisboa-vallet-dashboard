@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,104 +10,71 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 6% 97%;
-    --foreground: 240 10% 3.9%;
+    --background: 224 32% 10%; /* #151a23 */
+    --foreground: 220 20% 98%; /* quase branco */
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 224 32% 14%; /* #1a1a1d */
+    --card-foreground: 220 20% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 224 32% 14%;
+    --popover-foreground: 220 20% 98%;
 
-    /* Primary - Deep spiritual blue */
-    --primary: 229 84% 24%;
-    --primary-foreground: 240 6% 97%;
-    --primary-variant: 229 84% 35%;
+    /* Principal - Azul elétrico e roxo magenta */
+    --primary: 222 100% 54%; /* #007bff */
+    --primary-foreground: 220 20% 98%;
+    --primary-variant: 271 76% 47%; /* #8a2be2 */
     
-    /* Secondary - Soft lavender */
-    --secondary: 265 15% 92%;
-    --secondary-foreground: 240 10% 3.9%;
+    /* Secundária - Dourado/bronze */
+    --accent: 38 85% 55%; /* #e6b800 */
+    --accent-foreground: 220 20% 98%;
 
-    /* Muted - Light gray */
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    /* Accent - Warm gold */
-    --accent: 45 93% 47%;
-    --accent-foreground: 240 10% 3.9%;
-
-    /* Church-inspired colors */
-    --church-blue: 229 84% 24%;
-    --church-gold: 45 93% 47%;
-    --church-light: 265 15% 92%;
+    --muted: 224 32% 18%;
+    --muted-foreground: 220 10% 70%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 229 84% 24%;
+    --border: 222 100% 54%;
+    --input: 224 32% 18%;
+    --ring: 222 100% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --font-title: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', 'Poppins', 'Lato', sans-serif;
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 240 6% 97%;
+  html, body {
+    font-family: var(--font-body);
+    background: linear-gradient(120deg, #0F1C2D 0%, #1A1A1D 100%);
+    min-height: 100vh;
+    color: hsl(var(--foreground));
+    transition: background 0.5s;
+  }
 
-    --card: 240 10% 3.9%;
-    --card-foreground: 240 6% 97%;
+  body {
+    /* Animação de gradiente sutil */
+    background: linear-gradient(120deg, #0F1C2D, #1A1A1D, #16213E, #1A1A1D);
+    background-size: 200% 200%;
+    animation: gradientMove 12s ease-in-out infinite;
+  }
 
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 240 6% 97%;
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    --primary: 229 84% 35%;
-    --primary-foreground: 240 6% 97%;
-    --primary-variant: 229 84% 45%;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 240 6% 97%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 45 93% 47%;
-    --accent-foreground: 240 10% 3.9%;
-
-    --church-blue: 229 84% 35%;
-    --church-gold: 45 93% 47%;
-    --church-light: 240 3.7% 15.9%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 229 84% 35%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  label, .label, .form-label {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: hsl(var(--foreground));
   }
 }
 
