@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Loading } from '@/components/ui/loading'
 import { supabase } from '@/integrations/supabase/client'
 import { useToast } from '@/hooks/use-toast'
-import { Car, Phone, User, Hash } from 'lucide-react'
+import { Car, Phone, User, Hash, Settings, ChevronRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 interface FormData {
   nome_completo: string
@@ -211,6 +212,21 @@ export function VehicleRegistrationForm() {
               'Registrar Veículo'
             )}
           </Button>
+          
+          {/* Botão Área dos Obreiros */}
+          <div className="pt-4 border-t border-[color:#222] mt-6">
+            <Link to="/auth" className="block">
+              <Button 
+                variant="outline"
+                size="lg"
+                className="group w-full flex items-center justify-center gap-2 bg-transparent border-2 border-[color:#8a2be2] text-[color:#8a2be2] hover:bg-[color:#8a2be2] hover:text-white font-bold rounded-xl px-6 py-3 text-base transition-all duration-300 focus:ring-2 focus:ring-[color:#8a2be2] focus:ring-offset-2 active:scale-95"
+              >
+                <Settings className="h-5 w-5" strokeWidth={2} />
+                Área dos Obreiros
+                <ChevronRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+          </div>
         </form>
       </CardContent>
     </Card>
