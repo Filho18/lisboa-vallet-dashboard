@@ -11,7 +11,7 @@ import { VehicleModal } from '@/components/VehicleModal'
 import { useAuth } from '@/hooks/useAuth'
 import { supabase } from '@/integrations/supabase/client'
 import { useToast } from '@/hooks/use-toast'
-import { Search, Filter, Eye, LogOut, Car, Users } from 'lucide-react'
+import { Search, Filter, Eye, LogOut, Car, Users, Trash2 } from 'lucide-react'
 
 interface Vehicle {
   id: string
@@ -99,6 +99,35 @@ export default function Obreiros() {
   const handleViewDetails = (vehicle: Vehicle) => {
     setSelectedVehicle(vehicle)
     setModalOpen(true)
+  }
+
+  const handleDeleteVehicle = async (vehicle: Vehicle) => {
+    if (!confirm(`Tem certeza que deseja apagar o veículo ${vehicle.matricula_carro} de ${vehicle.nome_completo}?`)) {
+      return
+    }
+
+    try {
+      const { error } = await supabase
+        .from('fieis_veiculos')
+        .delete()
+        .eq('id', vehicle.id)
+
+      if (error) throw error
+
+      toast({
+        title: "Veículo apagado com sucesso",
+        description: `O veículo ${vehicle.matricula_carro} foi removido do sistema.`,
+      })
+
+      // Refresh the vehicles list
+      fetchVehicles()
+    } catch (error) {
+      toast({
+        title: "Erro ao apagar veículo",
+        description: "Não foi possível apagar o veículo. Tente novamente.",
+        variant: "destructive"
+      })
+    }
   }
 
   const handleSignOut = async () => {
@@ -251,15 +280,26 @@ export default function Obreiros() {
                           <p className="text-sm text-foreground">{vehicle.modelo_carro}</p>
                           <p className="font-mono font-semibold text-primary text-xs">{vehicle.matricula_carro}</p>
                         </div>
-                        <Button
-                          onClick={() => handleViewDetails(vehicle)}
-                          size="sm"
-                          variant="outline"
-                          className="flex items-center gap-1 text-xs"
-                        >
-                          <Eye className="h-3 w-3" />
-                          Detalhes
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button
+                            onClick={() => handleViewDetails(vehicle)}
+                            size="sm"
+                            variant="outline"
+                            className="flex items-center gap-1 text-xs"
+                          >
+                            <Eye className="h-3 w-3" />
+                            Detalhes
+                          </Button>
+                          <Button
+                            onClick={() => handleDeleteVehicle(vehicle)}
+                            size="sm"
+                            variant="destructive"
+                            className="flex items-center gap-1 text-xs"
+                          >
+                            <Trash2 className="h-3 w-3" />
+                            Apagar
+                          </Button>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -303,15 +343,26 @@ export default function Obreiros() {
                           {vehicle.matricula_carro}
                         </TableCell>
                         <TableCell className="text-center">
-                          <Button
-                            onClick={() => handleViewDetails(vehicle)}
-                            size="sm"
-                            variant="outline"
-                            className="flex items-center gap-1 text-xs"
-                          >
-                            <Eye className="h-3 w-3" />
-                            Ver Detalhes
-                          </Button>
+                          <div className="flex items-center justify-center gap-2">
+                            <Button
+                              onClick={() => handleViewDetails(vehicle)}
+                              size="sm"
+                              variant="outline"
+                              className="flex items-center gap-1 text-xs"
+                            >
+                              <Eye className="h-3 w-3" />
+                              Ver Detalhes
+                            </Button>
+                            <Button
+                              onClick={() => handleDeleteVehicle(vehicle)}
+                              size="sm"
+                              variant="destructive"
+                              className="flex items-center gap-1 text-xs"
+                            >
+                              <Trash2 className="h-3 w-3" />
+                              Apagar
+                            </Button>
+                          </div>
                         </TableCell>
                       </TableRow>
                     ))
