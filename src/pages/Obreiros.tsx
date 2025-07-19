@@ -127,86 +127,87 @@ export default function Obreiros() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-church-light via-background to-secondary">
       {/* Header */}
-      <header className="bg-card/80 backdrop-blur-sm border-b border-border">
-        <div className="container mx-auto px-4 py-4">
+      <header className="bg-card/80 backdrop-blur-sm border-b border-border sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-3 md:py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Car className="h-8 w-8 text-primary" />
+            <div className="flex items-center gap-2 md:gap-3">
+              <Car className="h-6 md:h-8 w-6 md:w-8 text-primary" />
               <div>
-                <h1 className="text-2xl font-bold text-primary">MIF Lisboa</h1>
-                <p className="text-sm text-muted-foreground">Painel dos Obreiros</p>
+                <h1 className="text-xl md:text-2xl font-bold text-primary">MIF Lisboa</h1>
+                <p className="text-xs md:text-sm text-muted-foreground hidden sm:block">Painel dos Obreiros</p>
               </div>
             </div>
             
             <Button 
               onClick={handleSignOut}
               variant="outline"
-              className="flex items-center gap-2"
+              size="sm"
+              className="flex items-center gap-1 md:gap-2 text-xs md:text-sm"
             >
-              <LogOut className="h-4 w-4" />
-              Sair
+              <LogOut className="h-3 md:h-4 w-3 md:w-4" />
+              <span className="hidden sm:inline">Sair</span>
             </Button>
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4 md:py-8">
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
           <Card className="bg-card/80 backdrop-blur-sm border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total de Veículos</CardTitle>
-              <Car className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4 md:p-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Total de Veículos</CardTitle>
+              <Car className="h-3 md:h-4 w-3 md:w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-primary">{vehicles.length}</div>
+            <CardContent className="p-4 md:p-6 pt-0">
+              <div className="text-xl md:text-2xl font-bold text-primary">{vehicles.length}</div>
             </CardContent>
           </Card>
           
           <Card className="bg-card/80 backdrop-blur-sm border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Marcas Diferentes</CardTitle>
-              <Filter className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4 md:p-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Marcas Diferentes</CardTitle>
+              <Filter className="h-3 md:h-4 w-3 md:w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-primary">{uniqueBrands.length}</div>
+            <CardContent className="p-4 md:p-6 pt-0">
+              <div className="text-xl md:text-2xl font-bold text-primary">{uniqueBrands.length}</div>
             </CardContent>
           </Card>
           
           <Card className="bg-card/80 backdrop-blur-sm border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Fiéis Registrados</CardTitle>
-              <Users className="h-4 w-4 text-muted-foreground" />
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 p-4 md:p-6">
+              <CardTitle className="text-xs md:text-sm font-medium">Fiéis Registrados</CardTitle>
+              <Users className="h-3 md:h-4 w-3 md:w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-primary">{vehicles.length}</div>
+            <CardContent className="p-4 md:p-6 pt-0">
+              <div className="text-xl md:text-2xl font-bold text-primary">{vehicles.length}</div>
             </CardContent>
           </Card>
         </div>
 
         {/* Filters and Search */}
         <Card className="bg-card/80 backdrop-blur-sm border-border mb-6">
-          <CardHeader>
-            <CardTitle className="text-xl text-primary">Registros de Veículos</CardTitle>
-            <CardDescription>
+          <CardHeader className="p-4 md:p-6">
+            <CardTitle className="text-lg md:text-xl text-primary">Registros de Veículos</CardTitle>
+            <CardDescription className="text-sm">
               Gerir e visualizar todos os veículos registrados no sistema
             </CardDescription>
           </CardHeader>
           
-          <CardContent>
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <div className="flex-1 relative">
+          <CardContent className="p-4 md:p-6">
+            <div className="flex flex-col gap-4 mb-6">
+              <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder="Pesquisar por nome, modelo ou matrícula..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 focus:ring-primary"
+                  className="pl-10 h-10 md:h-11 focus:ring-primary text-sm md:text-base"
                 />
               </div>
               
               <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-                <SelectTrigger className="w-full sm:w-48">
+                <SelectTrigger className="w-full h-10 md:h-11 text-sm md:text-base">
                   <SelectValue placeholder="Filtrar por marca" />
                 </SelectTrigger>
                 <SelectContent className="bg-popover border-border">
@@ -220,28 +221,69 @@ export default function Obreiros() {
 
             {/* Results Summary */}
             <div className="mb-4">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs md:text-sm text-muted-foreground">
                 Mostrando {filteredVehicles.length} de {vehicles.length} registros
               </p>
             </div>
 
-            {/* Table */}
-            <div className="rounded-md border border-border overflow-hidden">
+            {/* Mobile Card View */}
+            <div className="block md:hidden space-y-4">
+              {filteredVehicles.length === 0 ? (
+                <div className="text-center py-8 text-muted-foreground text-sm">
+                  {vehicles.length === 0 
+                    ? "Nenhum veículo registrado ainda."
+                    : "Nenhum resultado encontrado para os filtros selecionados."
+                  }
+                </div>
+              ) : (
+                filteredVehicles.map((vehicle) => (
+                  <Card key={vehicle.id} className="bg-card/60 border-border">
+                    <CardContent className="p-4">
+                      <div className="flex justify-between items-start mb-3">
+                        <div>
+                          <h3 className="font-semibold text-foreground text-sm">{vehicle.nome_completo}</h3>
+                          <p className="text-xs text-muted-foreground">{vehicle.telefone}</p>
+                        </div>
+                        <Badge variant="secondary" className="text-xs">{vehicle.marca_carro}</Badge>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <p className="text-sm text-foreground">{vehicle.modelo_carro}</p>
+                          <p className="font-mono font-semibold text-primary text-xs">{vehicle.matricula_carro}</p>
+                        </div>
+                        <Button
+                          onClick={() => handleViewDetails(vehicle)}
+                          size="sm"
+                          variant="outline"
+                          className="flex items-center gap-1 text-xs"
+                        >
+                          <Eye className="h-3 w-3" />
+                          Detalhes
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              )}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden md:block rounded-md border border-border overflow-hidden">
               <Table>
                 <TableHeader>
                   <TableRow className="bg-muted/50">
-                    <TableHead className="font-semibold">Nome</TableHead>
-                    <TableHead className="font-semibold">Telefone</TableHead>
-                    <TableHead className="font-semibold">Marca</TableHead>
-                    <TableHead className="font-semibold">Modelo</TableHead>
-                    <TableHead className="font-semibold">Matrícula</TableHead>
-                    <TableHead className="font-semibold text-center">Ações</TableHead>
+                    <TableHead className="font-semibold text-sm">Nome</TableHead>
+                    <TableHead className="font-semibold text-sm">Telefone</TableHead>
+                    <TableHead className="font-semibold text-sm">Marca</TableHead>
+                    <TableHead className="font-semibold text-sm">Modelo</TableHead>
+                    <TableHead className="font-semibold text-sm">Matrícula</TableHead>
+                    <TableHead className="font-semibold text-center text-sm">Ações</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {filteredVehicles.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={6} className="text-center py-8 text-muted-foreground">
+                      <TableCell colSpan={6} className="text-center py-8 text-muted-foreground text-sm">
                         {vehicles.length === 0 
                           ? "Nenhum veículo registrado ainda."
                           : "Nenhum resultado encontrado para os filtros selecionados."
@@ -251,13 +293,13 @@ export default function Obreiros() {
                   ) : (
                     filteredVehicles.map((vehicle) => (
                       <TableRow key={vehicle.id} className="hover:bg-muted/30">
-                        <TableCell className="font-medium">{vehicle.nome_completo}</TableCell>
-                        <TableCell>{vehicle.telefone}</TableCell>
+                        <TableCell className="font-medium text-sm">{vehicle.nome_completo}</TableCell>
+                        <TableCell className="text-sm">{vehicle.telefone}</TableCell>
                         <TableCell>
-                          <Badge variant="secondary">{vehicle.marca_carro}</Badge>
+                          <Badge variant="secondary" className="text-xs">{vehicle.marca_carro}</Badge>
                         </TableCell>
-                        <TableCell>{vehicle.modelo_carro}</TableCell>
-                        <TableCell className="font-mono font-semibold text-primary">
+                        <TableCell className="text-sm">{vehicle.modelo_carro}</TableCell>
+                        <TableCell className="font-mono font-semibold text-primary text-sm">
                           {vehicle.matricula_carro}
                         </TableCell>
                         <TableCell className="text-center">
@@ -265,7 +307,7 @@ export default function Obreiros() {
                             onClick={() => handleViewDetails(vehicle)}
                             size="sm"
                             variant="outline"
-                            className="flex items-center gap-1"
+                            className="flex items-center gap-1 text-xs"
                           >
                             <Eye className="h-3 w-3" />
                             Ver Detalhes
