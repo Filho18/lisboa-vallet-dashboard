@@ -116,7 +116,7 @@ export function VehicleRegistrationForm() {
         <CardTitle className="text-2xl md:text-3xl xl:text-4xl font-extrabold font-title text-white drop-shadow-glow-primary">
           Registro de Veículo
         </CardTitle>
-        <CardDescription className="text-gray-300 font-body text-sm md:text-base xl:text-lg leading-relaxed">
+        <CardDescription className="text-gray-300 font-body text-xs md:text-sm xl:text-base leading-relaxed">
           O TRATAMENTO DOS DADOS DO SEU VEÍCULO É REALIZADO EXCLUSIVAMENTE POR UMA EQUIPA AUTORIZADA DE SERVOS COM TOTAL RESPEITO PELA SUA PRIVACIDADE.
         </CardDescription>
       </CardHeader>
